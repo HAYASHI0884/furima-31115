@@ -21,7 +21,7 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
-| introduction       | string     | null: false                    |
+| introduction       | text       | null: false                    |
 | price              | integer    | null: false                    |
 | category_id        | integer    | null: false                    |
 | item_condition_id  | integer    | null: false                    |
