@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :null_session
+
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :email, :encrypted_password, :lastname, :firstname, :lastname_kana, :firstname_kana, :birthday])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :email, :password, :password_confirmation, :lastname, :firstname, :lastname_kana, :firstname_kana, :birthday])
   end
 end
