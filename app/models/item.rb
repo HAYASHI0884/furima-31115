@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordExtensions
+  extend ActiveHash::Associations::ActiveStorage
   belongs_to_active_hash :genre
   has_one_attached :image
 
