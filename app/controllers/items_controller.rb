@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def created
+  def create
     @item = Item.new(item_params)
     if @item.save
       redrect_to root_path
