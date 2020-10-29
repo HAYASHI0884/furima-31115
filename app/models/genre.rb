@@ -1,7 +1,3 @@
-class Genre < ApplicationRecord
-
-end
-
 class Genre < ActiveHash::Base
   self.data = [
     { id: 1, name: '--' },
@@ -16,3 +12,4 @@ class Genre < ActiveHash::Base
     { id: 10, name: 'その他' }
   ]
   end
+end
