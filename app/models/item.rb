@@ -10,7 +10,7 @@ class Item < ApplicationRecord
 
   validates :name, :introduction, :image, presence: true
 
-  with_options presence: true, format: { with: /\A[0-9]+\z/} do
+  with_options presence: true, inclusion: {in: 300..9999999 }, format: { with: /\A[0-9]+\z/} do
     validates :price
   end
 
