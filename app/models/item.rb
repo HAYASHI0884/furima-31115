@@ -8,11 +8,17 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
-  validates :name, :introduction, :category_id, :item_condition_id, :postage_payer_id, :shipping_area_id, :preparation_day_id, :image, presence: true
+  validates :name, :introduction, :image, presence: true
 
   with_options presence: true, format: { with: /\A[0-9]+\z/} do
     validates :price
   end
 
-  vaildates :category_id, :item_condition_id, :postage_payer_id, :shipping_area_id, :preparation_day_id, numericality: { other_than: 1 }
+  with_options presence: true, numericality: { other_than: 1 } do
+    validates :category_id
+    validates :item_condition_id
+    validates :postage_payer_id
+    validates :shipping_area_id
+    validates :preparation_day_id
+  end
 end
