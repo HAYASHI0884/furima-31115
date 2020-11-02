@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :postage_payer
   belongs_to_active_hash :shipping_area
   belongs_to_active_hash :preparation_day
-
+  belongs_to :user
   has_one_attached :image
 
   validates :name, :introduction, :image, presence: true
