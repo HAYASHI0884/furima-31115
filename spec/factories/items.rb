@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :item do
     association        :user
-    name               { "item" }
-    introduction       { "introduction" }
+    name               { 'item' }
+    introduction       { 'introduction' }
     price              { 300 }
     category_id        { 2 }
     item_condition_id  { 2 }
