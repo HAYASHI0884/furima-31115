@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :item do
+    association        :user
     name               { "item" }
     introduction       { "introduction" }
     price              { 300 }
