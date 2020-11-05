@@ -3,11 +3,11 @@ class BuyerAddress
   attr_accessor :postal_code, :prefectures_id, :municipality, :address_number, :building_name, :phone_number
 
   with_options presence: true do
-    validate :postal_code
-    validate :prefectures_id
-    validate :municipality
-    validate :address_number
-    validate :phone_number
+    validates :postal_code
+    validates :prefectures_id
+    validates :municipality
+    validates :address_number
+    validates :phone_number
   end
 
   def save
