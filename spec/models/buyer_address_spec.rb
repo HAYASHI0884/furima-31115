@@ -18,6 +18,10 @@ RSpec.describe BuyerAddress, type: :model do
         @buyer.phone_number = '09012345678'
         expect(@buyer).to be_valid
       end
+      it '建物名が空でも登録できる' do
+        @buyer.building_name = ''
+        expect(@buyer).to be_valid
+      end
     end
 
     context '購入できないとき' do
@@ -32,9 +36,14 @@ RSpec.describe BuyerAddress, type: :model do
         expect(@buyer.errors.full_messages).to include("Postal code can't be blank")
       end
       it 'prefectureが未選択だと登録できない' do
-        @buyer.prefectures_id = '0'
+        @buyer.prefectures_id = 0
         @buyer.valid?
         expect(@buyer.errors.full_messages).to include('Prefectures must be other than 0')
+      end
+      it 'prefectureが空だと登録できない' do
+        @buyer.prefectures_id = ''
+        @buyer.valid?
+        expect(@buyer.errors.full_messages).to include("Prefectures can't be blank")
       end
       it 'municipalityが空だと登録できない' do
         @buyer.municipality = ''
