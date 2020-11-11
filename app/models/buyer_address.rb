@@ -6,11 +6,10 @@ class BuyerAddress
     validates :municipality
     validates :address_number
     validates :token
+    validates :prefectures_id, numericality: { other_than: 0 }
+    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/ }
+    validates :phone_number, format: { with: /\A\d{11}\z/ }
   end
-
-  validates :prefectures_id, presence: true, numericality: { other_than: 0 }
-  validates :postal_code, presence: true, format: { with: /\A\d{3}-\d{4}\z/ }
-  validates :phone_number, presence: true, format: { with: /\A\d{11}\z/ }
 
   def save
     buyer = Buyer.create(user_id: user_id, item_id: item_id)
