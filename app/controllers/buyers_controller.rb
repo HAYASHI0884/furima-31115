@@ -1,4 +1,8 @@
 class BuyersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :move_to_index
+  before_action :sold_out_items
+
   def index
     @item = Item.find(params[:item_id])
     @buyer_address = BuyerAddress.new
@@ -27,11 +31,25 @@ class BuyersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = "sk_test_ffb5600e88b15723bec2e94f"
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
         amount: @item.price,
         card: buyer_params[:token],
         currency: 'jpy'
       )
+  end
+
+  def move_to_index
+    item = Item.find(params[:item_id])
+    if current_user.id == item.user_id
+      redirect_to items_path
+    end
+  end
+
+  def sold_out_items
+    item = Item.find(params[:item_id])
+    unless Buyer.exists?(item.id)
+      redirect_to items_path
+    end
   end
 end
