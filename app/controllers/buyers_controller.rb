@@ -48,7 +48,7 @@ class BuyersController < ApplicationController
 
   def sold_out_items
     item = Item.find(params[:item_id])
-    unless Buyer.exists?(item.id)
+    if Buyer.exists?(item_id: item)
       redirect_to items_path
     end
   end
