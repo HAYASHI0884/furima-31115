@@ -8,7 +8,7 @@ class BuyerAddress
     validates :token
   end
 
-  validates :prefectures_id, presence: true, numericality: { other_than: 1 }
+  validates :prefectures_id, presence: true, numericality: { other_than: 0 }
   validates :postal_code, presence: true, format: { with: /\A\d{3}[-]\d{4}\z/ }
   validates :phone_number, presence: true, format: { with: /\A\d{11}\z/ }
 

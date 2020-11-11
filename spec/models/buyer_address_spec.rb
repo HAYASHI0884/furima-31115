@@ -32,9 +32,9 @@ RSpec.describe BuyerAddress, type: :model do
         expect(@buyer.errors.full_messages).to include("Postal code can't be blank")
       end
       it "prefectureが未選択だと登録できない" do
-        @buyer.prefectures_id = "1"
+        @buyer.prefectures_id = "0"
         @buyer.valid?
-        expect(@buyer.errors.full_messages).to include("Prefectures must be other than 1")
+        expect(@buyer.errors.full_messages).to include("Prefectures must be other than 0")
       end
       it "municipalityが空だと登録できない" do
         @buyer.municipality = ""
